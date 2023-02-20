@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllPosts } from "../api-adapter";
+import { Link } from "react-router-dom";
 
 const AllPosts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -7,7 +8,7 @@ const AllPosts = (props) => {
   async function getPosts() {
     try {
       const result = await getAllPosts();
-      console.log(result)
+      console.log(result);
       setPosts(result.data.posts);
     } catch (err) {
       console.log(err);
@@ -17,33 +18,23 @@ const AllPosts = (props) => {
     getPosts();
   }, []);
 
-  console.log(posts)
- 
-return (
+  return (
     <div id="all-posts">
       {posts.map((post, idx) => {
-        return(
-         <div> <h1 key={posts._id}>{post.title} </h1> </div>
-        )
+        return (
+          <div key={idx}>
+            <Link to={`${post._id}`}>
+              <h3>{post.title}</h3>
+            </Link>
+            <h4>{post.price}</h4>
+            <h4>Location: {post.location}</h4>
+            <h5>Travel: {post.willDeliver}</h5>
+            <p>Description: {post.description}</p>
+            <br />
+          </div>
+        );
       })}
     </div>
-    
-    //   <h1>All posts</h1>
-    //   <Link to="new-article">
-    //     <button>Post new article</button>
-    //   </Link>
-    //   {posts.length
-    //     ? posts.map((post, idx) => {
-    //         return (
-    //           <div key={idx}>
-    //             <Link to={`${post.id}`}>
-    //               <h3>{post.title}</h3>
-    //             </Link>
-    //           </div>
-    //         );
-    //       })
-    //     : null}
-    
   );
 };
 

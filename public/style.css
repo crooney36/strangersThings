@@ -8,3 +8,7 @@ body {
   color: white;
   height: 100px;
 }
+#allPosts {
+  margin: 50px;
+  padding: 25px;
+}
