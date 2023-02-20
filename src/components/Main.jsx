@@ -1,10 +1,13 @@
 import React from "react";
-import { Navbar } from "../components";
+import { AllPosts, Navbar, Post } from "../components";
 
 const Main = () => {
   return (
     <div id="main">
       <Navbar />
+      <AllPosts />
+      <Post />
+      <Post />
       React Boilerplate
     </div>
   );
