@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useParams } from "react";
 import { getIndividualPost } from "../api-adapter";
 
 const AllPosts = (props) => {
   const [post, setPost] = useState([]);
-  const [id, setid] = useState;
+  let { id } = useParams();
 
   async function getPost() {
     try {
-      const result = await getIndividualPost(_id);
-      console.log(result);
-      setPost(result.data.posts._id);
+      const result = await getIndividualPost(id);
+      setPost(result);
     } catch (err) {
       console.log(err);
     }
   }
+  useEffect(() => {
+    getPost();
+  }, []);
 
+  // Return div containing data for a single post
   return (
     <div id="single-post">
       <h1>{props.title} </h1>
@@ -27,4 +30,4 @@ const AllPosts = (props) => {
   );
 };
 
-export default AllPosts;
+export default { AllPosts };

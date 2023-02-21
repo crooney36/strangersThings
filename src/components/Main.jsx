@@ -1,11 +1,12 @@
 import React from "react";
-import { AllPosts, Navbar, Post } from "../components";
+import { Outlet } from "react-router-dom";
+import { Navbar } from "../components";
 
 const Main = () => {
   return (
     <div id="main">
       <Navbar />
-      <AllPosts />
+      <Outlet />
     </div>
   );
 };
