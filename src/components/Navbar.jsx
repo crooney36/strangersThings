@@ -5,10 +5,11 @@ const Navbar = () => {
     <div id="navbar">
       <div id="navbar-title">Stranger's Things</div>
       <div id="nav-buttons">
-        <button class="nav-button">Home</button>
-        <button class="nav-button">Login</button>
-        <button class="nav-button">Logout</button>
-        <button class="nav-button">Messages</button>
+        <button className="nav-button">Home</button>
+        <button className="nav-button">New Post</button>
+        <button className="nav-button">Login</button>
+        <button className="nav-button">Logout</button>
+        <button className="nav-button">Messages</button>
       </div>
     </div>
   );
