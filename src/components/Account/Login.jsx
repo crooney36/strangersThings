@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUserBackend } from "../../api-adapter";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [userName, setUsername] = useState("");
@@ -18,8 +19,12 @@ const Login = (props) => {
         onSubmit={(element) => {
           element.preventDefault();
           loginUser();
-        }}
-      ></form>
+        }} 
+       > <input type ="text" placeholder="userName" value = {userName} required onChange = {(e)=> {setUsername(e.target.value)}} /> 
+       <input type ="password" placeholder="password"value = {password} required onChange = {(e)=> {setPassword(e.target.value)}} /> 
+       <button type = "submit"> Login </button>
+       <Link to ="/Registration-page"><button className="nav-button">Register</button></Link>
+        </form>
     </div>
   );
 };

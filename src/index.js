@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Main, AllPosts, Post } from "./components";
+import { Main, AllPosts, Post, Login, Register, NewPost } from "./components";
 
 import {
   Route,
@@ -14,6 +14,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Main />}>
       <Route index element={<AllPosts />} />
       <Route path=":id" element={<Post />} />
+      <Route path="login-page" element = {<Login />} />
+      <Route path="Registration-page" element = {<Register />} />
+      <Route path="Newpost-page" element = {<NewPost />} />
     </Route>
   )
 );

@@ -60,7 +60,7 @@ export const registerUserBackend = async (userName, password) => {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         user: {
@@ -82,6 +82,7 @@ export const loginUserBackend = async (userName, password) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer TOKEN_USER"
       },
       body: JSON.stringify({
         user: {
