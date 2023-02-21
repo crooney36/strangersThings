@@ -13,18 +13,39 @@ const Login = (props) => {
     setToken = data;
   };
   return (
-    <div>
-      <h1>Login Page</h1>
+    <div id="loginPage">
       <form
         onSubmit={(element) => {
           element.preventDefault();
           loginUser();
-        }} 
-       > <input type ="text" placeholder="userName" value = {userName} required onChange = {(e)=> {setUsername(e.target.value)}} /> 
-       <input type ="password" placeholder="password"value = {password} required onChange = {(e)=> {setPassword(e.target.value)}} /> 
-       <button type = "submit"> Login </button>
-       <Link to ="/Registration-page"><button className="nav-button">Register</button></Link>
-        </form>
+        }}
+      >
+        <input
+          type="text"
+          placeholder="userName"
+          value={userName}
+          required
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          required
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <button type="submit"> Login </button>
+        <div id="registrationOnLogin">
+          <h5>Create an account here!</h5>
+          <Link to="/Registration-page">
+            <button className="nav-button">Register</button>
+          </Link>
+        </div>
+      </form>
     </div>
   );
 };

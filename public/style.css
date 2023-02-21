@@ -27,3 +27,21 @@ body {
   background-color: black;
   color: white;
 }
+
+#profilePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#loginPage {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#registrationOnLogin {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: row;
+}
