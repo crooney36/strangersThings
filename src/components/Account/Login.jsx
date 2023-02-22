@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { loginUserBackend } from "../../api-adapter";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const [userName, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const token = props.token;
   const setToken = props.setToken;
+  let isLoggedIn = props.isLoggedIn;
+  const Navigate = useNavigate();
 
   const loginUser = async () => {
-    const data = await loginUserBackend(userName, password);
-    setToken = data;
+    const data = await loginUserBackend(username, password);
+    localStorage.setItem("token", data);
+    isLoggedIn = true;
+    Navigate("/");
   };
+
   return (
     <div id="loginPage">
       <form
@@ -23,7 +28,7 @@ const Login = (props) => {
         <input
           type="text"
           placeholder="userName"
-          value={userName}
+          value={username}
           required
           onChange={(e) => {
             setUsername(e.target.value);

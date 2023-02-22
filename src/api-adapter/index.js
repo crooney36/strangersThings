@@ -74,22 +74,22 @@ export const deletePost = async (id) => {
 };
 
 // Register user to database
-export const registerUserBackend = async (userName, password) => {
+export const registerUserBackend = async (username, password) => {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         user: {
-          userName: userName,
+          username: username,
           password: password,
         },
       }),
     });
     const result = await response.json();
+    console.log(result);
     return result.data.token;
   } catch (error) {
     console.log(error);
@@ -97,7 +97,7 @@ export const registerUserBackend = async (userName, password) => {
 };
 
 // Login user
-export const loginUserBackend = async (userName, password) => {
+export const loginUserBackend = async (username, password) => {
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
@@ -107,7 +107,7 @@ export const loginUserBackend = async (userName, password) => {
       },
       body: JSON.stringify({
         user: {
-          userName: userName,
+          username: username,
           password: password,
         },
       }),

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { registerUserBackend } from "../../api-adapter";
+import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
-  const [userName, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [toke, setToken] = useState("");
+  const Navigate = useNavigate();
 
   const registerUser = async () => {
-    const data = await registerUserBackend(userName, password);
-    setToken = data;
-    localStorage.setItem("token", token);
+    const data = await registerUserBackend(username, password);
+    localStorage.setItem("token", data);
+    Navigate("/");
   };
 
   return (
@@ -25,7 +26,7 @@ const Register = (props) => {
         <input
           type="text"
           placeholder="userName"
-          value={userName}
+          value={username}
           required
           onChange={(e) => {
             setUsername(e.target.value);
