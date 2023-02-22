@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getAllPosts } from "../api-adapter";
-import { Link } from "react-router-dom";
+import { getAllPosts, deletePost } from "../api-adapter";
+import { Link, useNavigate } from "react-router-dom";
 
+// Fetch all posts from api
 const AllPosts = (props) => {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
 
   async function getPosts() {
     try {
@@ -13,6 +15,20 @@ const AllPosts = (props) => {
       console.log(err);
     }
   }
+
+  // Delete post from api
+  async function deletePostFromBackend(id) {
+    let currentPosts = posts;
+    try {
+      await deletePost(id);
+      currentPosts.splice(idx, 1);
+      setPosts(currentPosts);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -27,6 +43,17 @@ const AllPosts = (props) => {
             <h4>{post.price}</h4>
             <h4>Location: {post.location}</h4>
             <button>Send Message</button>
+            {post.isAuthor ? (
+              <div>
+                <button
+                  onClick={() => {
+                    deletePostFromBackend(post._id, idx);
+                  }}
+                >
+                  Delete Post
+                </button>
+              </div>
+            ) : null}
             <br />
             <br />
           </div>
