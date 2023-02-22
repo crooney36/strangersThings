@@ -9,7 +9,10 @@ const NewPost = (props) => {
   const [willDeliver, setWillDeliver] = useState("");
   return (
     <div>
-      <form>
+      <form onSubmit ={(e) => {
+        e.preventDefault()
+        makePost()
+      }}>
         <input
           type="text"
           placeholder="title"

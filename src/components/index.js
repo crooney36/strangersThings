@@ -6,3 +6,4 @@ export { default as Login } from "./Account/Login";
 export { default as Register } from "./Account/Register";
 export { default as NewPost } from "./NewPost";
 export { default as Profile } from "./Account/Profile";
+export { default as Messages} from "./Account/Messages";
