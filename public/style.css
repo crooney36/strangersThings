@@ -2,15 +2,38 @@ body {
   margin: 0;
 }
 #navbar {
-  background-color: black;
+  background-color: #143642;
   display: flex;
   align-items: center;
-  color: white;
   height: 100px;
+  color: #E2FDFF;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 20pt;
+  letter-spacing: 4px;
 }
 #allPosts {
+  color: #E2FDFF;
   margin: 50px;
   padding: 25px;
+}
+#single-posts{
+  background-color: #0F8B8D;
+  border: 1px solid black;
+
+}
+#all-posts-sendMessage{
+  background-color: black;
+  color: brown;
+  padding: 10px 24px;
+  border: 2px solid brown;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
+h4{
+  font-family: "Trirong", serif;
+  font-size: large;
 }
 #nav-buttons {
   display: flex;

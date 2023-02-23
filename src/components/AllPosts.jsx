@@ -38,11 +38,11 @@ const AllPosts = (props) => {
     <div id="all-posts">
       {posts.map((post, idx) => {
         return (
-          <div key={idx}>
+          <div key={idx} id="single-posts">
             <Link to={`/${post._id}`}>{post.title}</Link>
             <h4>{post.price}</h4>
             <h4>Location: {post.location}</h4>
-            <button>Send Message</button>
+            <button id="all-posts-sendMessage">Send Message</button>
             {post.isAuthor ? (
               <div>
                 <button
