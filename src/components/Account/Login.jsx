@@ -5,15 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const token = props.token;
-  const setToken = props.setToken;
-  let isLoggedIn = props.isLoggedIn;
   const Navigate = useNavigate();
 
   const loginUser = async () => {
     const data = await loginUserBackend(username, password);
     localStorage.setItem("token", data);
-    isLoggedIn = true;
     Navigate("/");
   };
 

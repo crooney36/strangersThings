@@ -6,32 +6,31 @@ body {
   display: flex;
   align-items: center;
   height: 100px;
-  color: #E2FDFF;
+  color: #e2fdff;
   justify-content: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 900;
   font-size: 20pt;
   letter-spacing: 4px;
 }
 #allPosts {
-  color: #E2FDFF;
+  color: #e2fdff;
   margin: 50px;
   padding: 25px;
 }
-#single-posts{
-  background-color: #0F8B8D;
+#single-posts {
+  background-color: #0f8b8d;
   border: 1px solid black;
-
 }
-#all-posts-sendMessage{
+#all-posts-sendMessage {
   background-color: black;
-  color: brown;
+  color: white;
   padding: 10px 24px;
-  border: 2px solid brown;
+  border: 2px solid white;
   border-radius: 12px;
   transition-duration: 0.4s;
 }
-h4{
+h4 {
   font-family: "Trirong", serif;
   font-size: large;
 }
@@ -67,4 +66,23 @@ h4{
   display: flex;
   margin-top: 50px;
   flex-direction: row;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#new-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }

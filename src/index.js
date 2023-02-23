@@ -8,6 +8,7 @@ import {
   Register,
   NewPost,
   Profile,
+  Messages,
 } from "./components";
 
 import {
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="registration-page" element={<Register />} />
       <Route path="newpost-page" element={<NewPost />} />
       <Route path="profile-page" element={<Profile />} />
+      <Route path="send-messages-page" element={<Messages />} />
     </Route>
   )
 );

@@ -1,9 +1,11 @@
 const BASE_URL = "https://strangers-things.herokuapp.com/api/2301-ftb-et";
 
+// Get all posts from DB
 export const getAllPosts = async () => {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "GET",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     });
     const result = await response.json();
     return result;
@@ -12,10 +14,12 @@ export const getAllPosts = async () => {
   }
 };
 
+// Get post by ID
 export const getIndividualPost = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/${_id}`, {
       method: "GET",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     });
     const result = await response.json();
     return result;
@@ -114,6 +118,23 @@ export const loginUserBackend = async (username, password) => {
     });
     const result = await response.json();
     return result.data.token;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get user from DB
+export const getUser = async (token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    return result;
   } catch (error) {
     console.log(error);
   }
