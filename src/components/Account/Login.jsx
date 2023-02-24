@@ -5,22 +5,21 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useOutletContext();
   const Navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useOutletContext();
 
   const handleLogin = async () => {
     try {
+      console.log("logging in");
       const data = await loginUserBackend(username, password);
-      console.log("Login front end", data);
       localStorage.setItem("token", data);
       setIsLoggedIn(true);
-      console.log("isLoggedIn", isLoggedIn);
+      console.log("Login Status after update: ", isLoggedIn);
       Navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
-
   return (
     <div id="loginPage">
       <form

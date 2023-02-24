@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { getAllPosts, deletePost } from "../api-adapter";
-import { Link, useNavigate } from "react-router-dom";
-
+import { getAllPosts } from "../api-adapter";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 // Fetch all posts from api
 const AllPosts = (props) => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+  const [
+    token,
+    setToken,
+    isLoggedIn,
+    setIsLoggedIn,
+    user,
+    setUser,
+    isAuthor,
+    setIsAuthor,
+  ] = useOutletContext();
 
   async function getPosts() {
     try {
       const result = await getAllPosts();
       setPosts(result.data.posts);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  // Delete post from api
-  async function deletePostFromBackend(id) {
-    let currentPosts = posts;
-    try {
-      await deletePost(id);
-      currentPosts.splice(idx, 1);
-      setPosts(currentPosts);
-      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -43,6 +39,7 @@ const AllPosts = (props) => {
             <h4>Price: {post.price}</h4>
             <h4>Seller: {post.author.username}</h4>
             <h4>Location: {post.location}</h4>
+            <h4>Delivery: {post.willDeliver}</h4>
             {localStorage.getItem("token") ? (
               <Link to={"send-messages-page"}>
                 <button id="all-posts-sendMessage">Send Message</button>

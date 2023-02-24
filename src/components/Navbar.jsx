@@ -3,18 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, user }) => {
   const Navigate = useNavigate();
-  console.log(isLoggedIn);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    Navigate("/");
-  };
 
   // Re-render Navbar on login or logout
-  useEffect(() => {
-    console.log("Navbar re-rendered");
-  }, [isLoggedIn]);
 
   if (!isLoggedIn) {
     return (

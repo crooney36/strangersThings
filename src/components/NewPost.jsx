@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { makePost } from "../api-adapter";
-
+import { useNavigate } from "react-router-dom";
 const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [willDeliver, setWillDeliver] = useState("");
+  const [willDeliver, setWillDeliver] = useState("false");
+  const Navigate = useNavigate();
 
   if (localStorage.getItem("token")) {
     return (
@@ -14,7 +15,8 @@ const NewPost = (props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            makePost();
+            makePost(title, location, price, description, willDeliver);
+            Navigate("/");
           }}
         >
           <input
@@ -30,7 +32,6 @@ const NewPost = (props) => {
             type="text"
             placeholder="location"
             value={location}
-            required
             onChange={(e) => {
               setLocation(e.target.value);
             }}
@@ -53,15 +54,10 @@ const NewPost = (props) => {
               setDescription(e.target.value);
             }}
           />
-          <input
-            type="text"
-            placeholder="Delivery?"
-            value={willDeliver}
-            required
-            onChange={(e) => {
-              setWillDeliver(e.target.value);
-            }}
-          />
+          {/* <select onChange={(e) => setWillDeliver(e.target.value)}>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select> */}
           <button type="submit">Submit Post!</button>
         </form>
       </div>

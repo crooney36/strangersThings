@@ -38,7 +38,7 @@ export const makePost = async (
   willDeliver
 ) => {
   try {
-    const response = await fetch(BASE_URL, {
+    const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       body: JSON.stringify({
         post: {
@@ -56,6 +56,7 @@ export const makePost = async (
     });
 
     const result = await response.json();
+    console.log("success", result);
     return result;
   } catch (error) {
     console.log(error);
@@ -131,7 +132,7 @@ export const getUser = async (token) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: $`{localStorage.getItem("token")`,
       },
     });
     const result = await response.json();
@@ -142,9 +143,9 @@ export const getUser = async (token) => {
 };
 
 // Add message to a post
-export const addMessage = async () => {
+export const addMessage = async (content, postID) => {
   try {
-    const response = await fetch(`${BASE_URL}/posts/${id}/messages`, {
+    const response = await fetch(`${BASE_URL}/posts/${postID}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -157,7 +158,7 @@ export const addMessage = async () => {
       }),
     });
     const result = await response.json();
-    return result.data.token;
+    return result;
   } catch (error) {
     console.log(error);
   }

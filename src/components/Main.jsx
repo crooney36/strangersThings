@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../components";
+import { getUser } from "../api-adapter";
 
 const Main = () => {
   const [token, setToken] = React.useState("");
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState({});
   const [isAuthor, setIsAuthor] = React.useState(false);
+
+  const getUserData = async () => {
+    try {
+      let data = await getUser(localStorage.getItem("token"));
+      setUser(data);
+      console.log("User data: ", data);
+      setIsLoggedIn(true);
+      console.log("Is logged in: ", isLoggedIn);
+    } catch (err) {
+      console.log("Error getting user data");
+    }
+  };
+
+  React.useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getUserData();
+    }
+  }, [isLoggedIn]);
 
   return (
     <div id="main">

@@ -23,6 +23,8 @@ const Profile = (props) => {
         {messages.map((message) => {
           return (
             <div>
+              <h5>{message.fromUser}</h5>
+              <h5>{message.post}</h5>
               <p>{message.content}</p>
             </div>
           );
