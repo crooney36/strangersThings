@@ -1,4 +1,5 @@
-const BASE_URL = "https://strangers-things.herokuapp.com/api/2301-ftb-et";
+const BASE_URL =
+  "https://strangers-things.herokuapp.com/api/2301-FTB-ET-WEB-FT";
 
 // Get all posts from DB
 export const getAllPosts = async () => {

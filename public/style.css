@@ -1,4 +1,5 @@
 body {
+  background-color: #27677e;
   margin: 0;
 }
 #navbar {
@@ -12,6 +13,8 @@ body {
   font-weight: 900;
   font-size: 20pt;
   letter-spacing: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 #allPosts {
   color: #e2fdff;
@@ -19,14 +22,20 @@ body {
   padding: 25px;
 }
 #single-posts {
-  background-color: #0f8b8d;
+  padding-top: 10px;
+  padding-left: 25px;
+  background-color: #27677e;
   border: 1px solid black;
+}
+#single-post {
+  margin-top: 15px;
+  margin-left: 40px;
 }
 #all-posts-sendMessage {
   background-color: black;
   color: white;
   padding: 10px 24px;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 12px;
   transition-duration: 0.4s;
 }
@@ -67,7 +76,14 @@ h4 {
   margin-top: 50px;
   flex-direction: row;
 }
-
+#registration-header-title {
+  display: flex;
+  justify-content: center;
+}
+#registration-header-p {
+  display: flex;
+  justify-content: center;
+}
 form {
   display: flex;
   flex-direction: row;
@@ -79,6 +95,7 @@ form {
 #new-post-form {
   display: flex;
   flex-direction: column;
+  background-color: #27677e;
 }
 
 input {

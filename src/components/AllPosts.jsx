@@ -10,9 +10,7 @@ const AllPosts = (props) => {
   async function getPosts() {
     try {
       const result = await getAllPosts();
-      console.log(result);
       setPosts(result.data.posts);
-      console.log(posts);
     } catch (err) {
       console.log(err);
     }
@@ -42,9 +40,9 @@ const AllPosts = (props) => {
         return (
           <div id="single-posts" key={idx}>
             <Link to={`/${post._id}`}>{post.title}</Link>
-            <h4>{post.price}</h4>
+            <h4>Price: {post.price}</h4>
+            <h4>Seller: {post.author.username}</h4>
             <h4>Location: {post.location}</h4>
-
             {localStorage.getItem("token") ? (
               <Link to={"send-messages-page"}>
                 <button id="all-posts-sendMessage">Send Message</button>

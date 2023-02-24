@@ -20,11 +20,7 @@ const Messages = (props) => {
             setContent(e.target.value);
           }}
         />
-        <button
-          className="nav-button"
-          style={{ height: "30px", width: "15px" }}
-          type="Submit"
-        ></button>
+        <button className="nav-button" type="Submit"></button>
       </form>
     </div>
   );

@@ -16,11 +16,24 @@ const Register = (props) => {
 
   return (
     <div>
-      <h1>Registration Page</h1>
+      <div id="registration-header" r>
+        <h1 id="registration-header-title">Registration Page</h1>
+        <p id="registration-header-p">
+          <strong>
+            Usernames and passwords must be at least 3 characters!
+          </strong>
+        </p>
+      </div>
       <form
         onSubmit={(element) => {
           element.preventDefault();
-          registerUser();
+          if (
+            password === confirmPassword &&
+            username.length >= 3 &&
+            password.length >= 3
+          ) {
+            registerUser();
+          }
         }}
       >
         <input
