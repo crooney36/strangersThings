@@ -10,7 +10,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, user }) => {
     return (
       // Render navbar for users not logged in
       <div id="navbar">
-        <div id="navbar-title">Stranger's Things</div>
+        <div id="navbar-title" className="StrangersTitle">Stranger's Things</div>
         <div id="search-bar">
           <input type="search" placeholder="Search for items!" />
           <button id="searchButton">Search</button>

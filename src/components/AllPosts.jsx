@@ -31,7 +31,7 @@ const AllPosts = (props) => {
 
   // Return div containing all posts
   return (
-    <div id="all-posts">
+    <div id="all-posts" className="container">
       {posts.map((post, idx) => {
         return (
           <div id="single-posts" key={idx}>
