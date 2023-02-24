@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makePost } from "../api-adapter";
 import { useNavigate } from "react-router-dom";
-const NewPost = (props) => {
+const NewPost = () => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");

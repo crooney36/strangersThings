@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getIndividualPost, deletePost } from "../api-adapter";
 import { useParams, useOutletContext } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Post = (props) => {
+const Post = () => {
   const [post, setPost] = useState([]);
   let { id } = useParams();
   const [
@@ -16,22 +17,16 @@ const Post = (props) => {
     setIsAuthor,
   ] = useOutletContext();
 
-  async function getPost() {
+  // Get single post
+  async function getPost(id) {
     try {
       const result = await getIndividualPost(id);
+      console.log("query result", result);
       setPost(result.data.posts);
     } catch (err) {
       console.log(err);
     }
   }
-  // Set isAuthor = true if post.author._ID === user._ID
-  useEffect(() => {
-    if (post.author) {
-      if (post.author._id === user._id) {
-        setIsAuthor(true);
-      }
-    }
-  }, [post]);
 
   // Delete post from api
   async function deletePostFromBackend(id) {
@@ -47,8 +42,17 @@ const Post = (props) => {
   }
 
   useEffect(() => {
-    getPost();
+    getPost(id);
   }, []);
+
+  // Set isAuthor = true if post.author._ID === user._ID
+  useEffect(() => {
+    if (post.author) {
+      if (post.author._id === user._id) {
+        setIsAuthor(true);
+      }
+    }
+  }, [post]);
 
   // Return div containing data for a single post
   return (

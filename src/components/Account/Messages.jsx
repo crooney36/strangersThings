@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { addMessage } from "../../api-adapter";
 import { useParams } from "react-router-dom";
 
-const Messages = (props) => {
+const Messages = () => {
   const [content, setContent] = useState("");
   let { id } = useParams();
   return (

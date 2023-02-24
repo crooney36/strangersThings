@@ -23,6 +23,7 @@ export const getIndividualPost = async (id) => {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     });
     const result = await response.json();
+    console.log("response from api", result);
     return result;
   } catch (error) {
     console.log(error);
@@ -132,7 +133,7 @@ export const getUser = async (token) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: $`{localStorage.getItem("token")`,
+        Authorization: `Bearer ${token}`,
       },
     });
     const result = await response.json();

@@ -21,9 +21,11 @@ const Main = () => {
     }
   };
 
+  // Listen for changes to isLoggedIn and get user data corresponding to token
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       getUserData();
+      console.log("User data: ", user);
     }
   }, [isLoggedIn]);
 
