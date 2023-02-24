@@ -108,7 +108,6 @@ export const loginUserBackend = async (username, password) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         user: {
@@ -118,6 +117,7 @@ export const loginUserBackend = async (username, password) => {
       }),
     });
     const result = await response.json();
+    console.log("backend", result);
     return result.data.token;
   } catch (error) {
     console.log(error);

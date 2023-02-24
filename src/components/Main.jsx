@@ -7,17 +7,6 @@ const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
-  const loginHelperFunction = (token) => {
-    localStorage.setItem("token", token);
-    setToken(token);
-    setIsLoggedIn(true);
-  };
-
-  const logoutHelperFunction = () => {
-    localStorage.removeItem("token");
-    setToken("");
-    setIsLoggedIn(false);
-  };
   return (
     <div id="main">
       <Navbar
@@ -32,8 +21,6 @@ const Main = () => {
         setIsLoggedIn={setIsLoggedIn}
         user={user}
         setUser={setUser}
-        loginHelperFunction={loginHelperFunction}
-        logoutHelperFunction={logoutHelperFunction}
       />
     </div>
   );

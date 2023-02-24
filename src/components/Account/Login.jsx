@@ -5,12 +5,22 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setIsLoggedIn } = props;
   const Navigate = useNavigate();
+  console.log("Login props", props);
+  console.log(props.setIsLoggedIn);
 
-  const loginUser = async () => {
-    const data = await loginUserBackend(username, password);
-    localStorage.setItem("token", data);
-    Navigate("/");
+  const handleLogin = async () => {
+    // Perform login logic here
+    try {
+      const data = await loginUserBackend(username, password);
+      console.log("Login front end", data);
+      localStorage.setItem("token", data);
+      setIsLoggedIn(true);
+      Navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -18,7 +28,7 @@ const Login = (props) => {
       <form
         onSubmit={(element) => {
           element.preventDefault();
-          loginUser();
+          handleLogin();
         }}
       >
         <input
@@ -39,7 +49,7 @@ const Login = (props) => {
             setPassword(e.target.value);
           }}
         />
-        <button type="submit"> Login </button>
+        <button type="submit">Login</button>
         <div id="registrationOnLogin">
           <h5>Create an account here!</h5>
           <Link to="/Registration-page">
