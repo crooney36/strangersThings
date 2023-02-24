@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { loginUserBackend } from "../../api-adapter";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setIsLoggedIn } = props;
+  const [isLoggedIn, setIsLoggedIn] = useOutletContext();
   const Navigate = useNavigate();
-  console.log("Login props", props);
-  console.log(props.setIsLoggedIn);
 
   const handleLogin = async () => {
-    // Perform login logic here
     try {
       const data = await loginUserBackend(username, password);
       console.log("Login front end", data);
       localStorage.setItem("token", data);
       setIsLoggedIn(true);
+      console.log("isLoggedIn", isLoggedIn);
       Navigate("/");
     } catch (err) {
       console.log(err);

@@ -3,9 +3,10 @@ import { Outlet } from "react-router-dom";
 import { Navbar } from "../components";
 
 const Main = () => {
-  const [token, setToken] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [token, setToken] = React.useState("");
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [user, setUser] = React.useState({});
+  const [isAuthor, setIsAuthor] = React.useState(false);
 
   return (
     <div id="main">
@@ -15,12 +16,16 @@ const Main = () => {
         user={user}
       />
       <Outlet
-        token={token}
-        setToken={setToken}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        user={user}
-        setUser={setUser}
+        context={[
+          token,
+          setToken,
+          isLoggedIn,
+          setIsLoggedIn,
+          user,
+          setUser,
+          isAuthor,
+          setIsAuthor,
+        ]}
       />
     </div>
   );

@@ -1,11 +1,22 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = (props) => {
-  console.log(props);
+const Navbar = ({ isLoggedIn, setIsLoggedIn, user }) => {
   const Navigate = useNavigate();
+  console.log(isLoggedIn);
 
-  if (!props.isLoggedIn) {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    Navigate("/");
+  };
+
+  // Re-render Navbar on login or logout
+  useEffect(() => {
+    console.log("Navbar re-rendered");
+  }, [isLoggedIn]);
+
+  if (!isLoggedIn) {
     return (
       // Render navbar for users not logged in
       <div id="navbar">
@@ -24,7 +35,7 @@ const Navbar = (props) => {
         </div>
       </div>
     );
-  } else if (props.isLoggedIn) {
+  } else if (isLoggedIn) {
     // Render navbar for users who are logged in'
     return (
       <div id="navbar">
@@ -44,7 +55,7 @@ const Navbar = (props) => {
             className="nav-button"
             onClick={() => {
               localStorage.removeItem("token");
-              props.setIsLoggedIn(false);
+              setIsLoggedIn(false);
             }}
           >
             Logout
