@@ -127,13 +127,13 @@ export const loginUserBackend = async (username, password) => {
 };
 
 // Get user from DB
-export const getUser = async (token) => {
+export const getUser = async () => {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     const result = await response.json();

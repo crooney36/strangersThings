@@ -11,9 +11,10 @@ const Main = () => {
 
   const getUserData = async () => {
     try {
-      let data = await getUser(localStorage.getItem("token"));
+      const localStorageToken = localStorage.getItem("token");
+      let data = await getUser(localStorageToken);
       setUser(data);
-      console.log("User data: ", data);
+      console.log("User data: ", user);
       setIsLoggedIn(true);
       console.log("Is logged in: ", isLoggedIn);
     } catch (err) {

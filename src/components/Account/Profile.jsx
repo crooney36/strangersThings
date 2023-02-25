@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
-import { getUser } from "../../api-adapter";
+import { useOutletContext } from "react-router-dom";
 
-const Profile = (props) => {
-  const [
-    token,
-    setToken,
-    isLoggedIn,
-    setIsLoggedIn,
-    user,
-    setUser,
-    isAuthor,
-    setIsAuthor,
-  ] = useOutletContext();
-  let messages = user.messages;
+const Profile = () => {
+  const [user] = useOutletContext();
+
+  console.log("profile", user);
+  console.log(user.data);
+
+  let messages = user.data?.messages || [];
+  let posts = user.data?.posts || [];
 
   return (
     <div id="profile">
