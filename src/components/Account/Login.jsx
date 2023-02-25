@@ -10,12 +10,11 @@ const Login = (props) => {
 
   const handleLogin = async () => {
     try {
-      console.log("logging in");
       const data = await loginUserBackend(username, password);
       localStorage.setItem("token", data);
       setIsLoggedIn(true);
-      console.log("Login Status after update: ", isLoggedIn);
       Navigate("/");
+      location.reload();
     } catch (err) {
       console.log(err);
     }

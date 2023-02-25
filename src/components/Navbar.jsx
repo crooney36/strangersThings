@@ -46,6 +46,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, user }) => {
             onClick={() => {
               localStorage.removeItem("token");
               setIsLoggedIn(false);
+              Navigate("/");
             }}
           >
             Logout

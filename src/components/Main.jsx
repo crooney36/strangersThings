@@ -26,7 +26,7 @@ const Main = () => {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       getUserData();
-      console.log("User data: ", user);
+      console.log("User data ue: ", user);
     }
   }, [isLoggedIn]);
 
