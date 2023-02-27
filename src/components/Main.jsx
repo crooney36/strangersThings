@@ -8,6 +8,7 @@ const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState({});
   const [isAuthor, setIsAuthor] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState("");
 
   const getUserData = async () => {
     try {
@@ -46,6 +47,8 @@ const Main = () => {
           setUser,
           isAuthor,
           setIsAuthor,
+          searchTerm,
+          setSearchTerm,
         ]}
       />
     </div>

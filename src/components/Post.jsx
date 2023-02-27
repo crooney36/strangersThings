@@ -45,14 +45,14 @@ const Post = () => {
     getPost(id);
   }, []);
 
-  // Set isAuthor = true if post.author._ID === user._ID
-  useEffect(() => {
-    if (post.author) {
-      if (post.author._id === user._id) {
-        setIsAuthor(true);
-      }
-    }
-  }, [post]);
+  // // Set isAuthor = true if post.author._ID === user._ID
+  // useEffect(() => {
+  //   if (post.author) {
+  //     if (post.author._id === user._id) {
+  //       setIsAuthor(true);
+  //     }
+  //   }
+  // }, [post]);
 
   // Return div containing data for a single post
   return (
