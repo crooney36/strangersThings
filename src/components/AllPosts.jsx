@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllPosts } from "../api-adapter";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { handleSearch } from "./Search";
 // Fetch all posts from api
 const AllPosts = (props) => {
   const [posts, setPosts] = useState([]);

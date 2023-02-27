@@ -7,6 +7,7 @@ const Search = () => {
 
   function handleSearch(term) {
     setSearchTerm(term);
+    return searchTerm;
     console.log("Search term: ", term);
   }
 

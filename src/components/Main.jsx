@@ -16,7 +16,6 @@ const Main = () => {
       setUser(data);
       console.log("User data: ", user);
       setIsLoggedIn(true);
-      console.log("Is logged in: ", isLoggedIn);
     } catch (err) {
       console.log("Error getting user data");
     }
@@ -26,7 +25,7 @@ const Main = () => {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       getUserData();
-      console.log("User data ue: ", user);
+      console.log("User data: ", user);
     }
   }, [isLoggedIn]);
 
